@@ -15,11 +15,11 @@ class TeamStandard extends StatefulWidget {
 
 class _TeamStandardState extends State<TeamStandard> {
   // This method to increase counter with any value
-  Widget _buildButton(String text) {
+  Widget _buildButton(String text, void Function() onPressedButton) {
     return MaterialButton(
       minWidth: double.infinity,
       color: Colors.blue,
-      onPressed: () {},
+      onPressed: onPressedButton,
       child: Text(
         text,
         style: const TextStyle(
@@ -51,9 +51,30 @@ class _TeamStandardState extends State<TeamStandard> {
             ),
           ),
         ),
-        _buildButton('+1 POINT'),
-        _buildButton('+2 POINT'),
-        _buildButton('+3 POINT'),
+        _buildButton(
+          '+1 POINT',
+          () {
+            setState(() {
+              widget.score += 1;
+            });
+          },
+        ),
+        _buildButton(
+          '+2 POINT',
+          () {
+            setState(() {
+              widget.score += 2;
+            });
+          },
+        ),
+        _buildButton(
+          '+3 POINT',
+          () {
+            setState(() {
+              widget.score += 3;
+            });
+          },
+        ),
       ],
     );
   }

@@ -10,6 +10,8 @@ class BasketballBody extends StatefulWidget {
 }
 
 class _BasketballBodyState extends State<BasketballBody> {
+  int scoreA = 0;
+  int scoreB = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,11 +23,19 @@ class _BasketballBodyState extends State<BasketballBody> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(child: TeamStandard(team: 'TEAM A', score: 0)),
+                Expanded(
+                    child: TeamStandard(
+                  team: 'TEAM A',
+                  score: scoreA,
+                )),
                 const SizedBox(
                   width: 20,
                 ),
-                Expanded(child: TeamStandard(team: 'TEAM B', score: 0)),
+                Expanded(
+                    child: TeamStandard(
+                  team: 'TEAM B',
+                  score: scoreB,
+                )),
               ],
             ),
           ),
@@ -34,7 +44,12 @@ class _BasketballBodyState extends State<BasketballBody> {
             child: Center(
               child: MaterialButton(
                 color: Colors.grey,
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    scoreA = 0;
+                    scoreB = 0;
+                  });
+                },
                 child: const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
